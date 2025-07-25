@@ -1,0 +1,6 @@
+@OdontoWeb.API_HostAddress = http://localhost:5188
+
+GET {{OdontoWeb.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "5fFE260TBvEHBA5i+xZx8nKPf6+zJQ4fr+JUDojVaJ4=",
+  "Source": "OdontoWeb.API",
+  "BasePath": "_content/OdontoWeb.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
