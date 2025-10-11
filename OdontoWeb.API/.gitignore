@@ -1,0 +1,20 @@
+ # Build folders
+bin/
+obj/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+
+# Visual Studio files
+.vs/
+
+# Configuration files (optional)
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Local.json
+
+# Sensitive data
+appsettings.json
