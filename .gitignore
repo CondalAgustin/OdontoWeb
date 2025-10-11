@@ -1,0 +1,40 @@
+# Build folders
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# Logs
+*.log
+
+# Assemblies
+*.dll
+*.exe
+
+# NuGet
+*.nupkg
+project.lock.json
+packages/
+
+# Visual Studio Code
+.vscode/
+
+# ASP.NET / IIS
+appsettings.Development.json
+
+# node / react
+node_modules/
+dist/
+build/
+
+# mac / system
+.DS_Store
+Thumbs.db
