@@ -21,7 +21,10 @@ namespace OdontoWebAPI.Models
         [Required]
         public string PasswordHash { get; set; } = string.Empty;
 
+        [Column(TypeName = "timestamp without time zone")]
         public DateTime? FechaRegistro { get; set; } = DateTime.Now;
+
+        [Column(TypeName = "timestamp without time zone")]
         public DateTime? FechaModificacion { get; set; } = DateTime.Now;
 
       //  public ICollection<Turno>? Turnos { get; set; }
@@ -59,8 +62,11 @@ namespace OdontoWebAPI.Models
         [InverseProperty("TurnosReservados")]
         public Usuario UsuarioRegistroTurno { get; set; }
 
+        [Column(TypeName = "timestamp without time zone")]
         public DateTime FechaTurno { get; set; }
         public TimeSpan HoraTurno { get; set; }
+
+        [Column(TypeName = "timestamp without time zone")]
         public DateTime FechaCreacion { get; set; }
 
         public string Estado { get; set; }
