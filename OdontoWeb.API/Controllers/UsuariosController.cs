@@ -67,7 +67,7 @@ namespace OdontoWeb.API.Controllers
                 Sexo = dto.Sexo,
                 Rol = rol,
                 EstaActivo = true,
-                FechaRegistro = DateTime.UtcNow
+                FechaRegistro = DateTime.Now
             };
 
             _context.Usuarios.Add(usuario);
