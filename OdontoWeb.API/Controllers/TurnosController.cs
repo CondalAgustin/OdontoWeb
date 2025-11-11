@@ -106,7 +106,18 @@ namespace OdontoWebAPI.Controllers
 ";
 
 
-                    await emailService.EnviarEmailAsync(usuario.Email, asunto, cuerpo);
+                    _ = Task.Run(async () =>
+                    {
+                        try
+                        {
+                            await emailService.EnviarEmailAsync(usuario.Email, asunto, cuerpo);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error al enviar email: {ex.Message}");
+                        }
+                    });
+
                 }
 
                 return Ok(new { mensaje = "Turno reservado", idTurno = nuevoTurno.Id });
