@@ -96,14 +96,14 @@ namespace OdontoWebAPI.Controllers
 
                     string asunto = "Confirmación de turno - OdontoWeb";
                     string cuerpo = $@"
-    <h3>Hola {usuario.Nombre},</h3>
-    <p>Tu turno fue reservado correctamente.</p>
-    <p><strong>Fecha:</strong> {dto.FechaTurno:dd/MM/yyyy}</p>
-    <p><strong>Hora:</strong> {dto.HoraTurno.ToString(@"hh\:mm")}</p>
-    <p><strong>Especialidad:</strong> {servicio.Nombre}</p>
-    <br />
-    <p>Gracias por confiar en OdontoWeb.</p>
-";
+                         <h3>Hola {usuario.Nombre},</h3>
+                         <p>Tu turno fue reservado correctamente.</p>
+                         <p><strong>Fecha:</strong> {dto.FechaTurno:dd/MM/yyyy}</p>
+                         <p><strong>Hora:</strong> {dto.HoraTurno.ToString(@"hh\:mm")}</p>
+                         <p><strong>Especialidad:</strong> {servicio.Nombre}</p>
+                         <br />
+                         <p>Gracias por confiar en OdontoWeb.</p>
+                          ";
 
 
                     _ = Task.Run(async () =>
