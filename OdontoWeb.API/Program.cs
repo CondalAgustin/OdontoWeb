@@ -43,8 +43,11 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactDev", policy =>
     {
-        policy.WithOrigins("http://localhost:5173")
-              .AllowAnyHeader()
+        policy.WithOrigins(
+              "https://odontojony.vercel.app",  
+              "http://localhost:5173"   
+          )
+            .AllowAnyHeader()
               .AllowAnyMethod();
     });
 });
