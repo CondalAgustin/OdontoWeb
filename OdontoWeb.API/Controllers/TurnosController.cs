@@ -28,9 +28,9 @@ namespace OdontoWebAPI.Controllers
         {
             // Traer horarios ocupados y normalizar a minutos
             var horariosOcupados = await _context.Turnos
-                .Where(t => t.FechaTurno == fecha.Date)
-                .Select(t => t.HoraTurno)
-                .ToListAsync();
+                 .Where(t => t.FechaTurno == fecha.Date && t.Estado == "Confirmado")
+                 .Select(t => t.HoraTurno)
+                 .ToListAsync();
 
             var horaInicio = new TimeSpan(8, 0, 0);
             var horaFin = new TimeSpan(17, 0, 0);
