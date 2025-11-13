@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using OdontoWebAPI.DTOs;
+using OdontoWeb.Models;
+using OdontoWeb.API.DTOs;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -108,5 +110,61 @@ public class ServiciosController : ControllerBase
           
         return Ok(resultado);
     }
+
+    [HttpPost("registrarPuntaje")]
+    public async Task<IActionResult> RegistrarPuntaje([FromBody] RegistraPuntajeDto puntaje)
+    {
+        if (puntaje == null || puntaje.usuarioid <= 0)
+            return BadRequest("Datos inválidos.");
+
+        var existente = await _context.puntajestrivia
+            .FirstOrDefaultAsync(p => p.usuarioid == puntaje.usuarioid);
+
+        if (existente != null)
+        {
+            // 🔹 Si ya tiene puntaje, sumamos
+            existente.puntaje += puntaje.puntaje;
+            existente.fecha = DateTime.UtcNow;
+
+            _context.puntajestrivia.Update(existente);
+        }
+        else
+        {
+            var nueva = new PuntajeTrivia
+            {
+                usuarioid = puntaje.usuarioid,
+                puntaje = puntaje.puntaje,
+                fecha = DateTime.UtcNow
+        };
+            
+            _context.puntajestrivia.Add(nueva);
+        }
+
+        await _context.SaveChangesAsync();
+
+        return Ok(new { message = "Puntaje registrado correctamente." });
+    }
+
+    [HttpGet("topJugadores")]
+    public async Task<IActionResult> ObtenerTopJugadores()
+    {
+        var topJugadores = await _context.puntajestrivia
+            .Include(p => p.Usuario)
+            .OrderByDescending(p => p.puntaje)
+            .Take(10)
+            .Select(p => new TopJugadorDto
+            {
+                UsuarioId = p.usuarioid,
+                Nombre = p.Usuario.Nombre,
+                Apellido = p.Usuario.Apellido,
+                Puntaje = p.puntaje
+            })
+            .ToListAsync();
+
+        return Ok(topJugadores);
+    }
+
+
+
 
 }

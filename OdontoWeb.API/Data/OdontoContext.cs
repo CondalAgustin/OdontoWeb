@@ -17,6 +17,7 @@ namespace OdontoWebAPI.Data
         public DbSet<Servicio> Servicios { get; set; }
 
         public DbSet<Pregunta> preguntas { get; set; }
+        public DbSet<PuntajeTrivia> puntajestrivia { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
