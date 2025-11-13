@@ -76,4 +76,37 @@ public class ServiciosController : ControllerBase
 
         return Ok();
     }
+
+    [HttpGet("obtenerPreguntas")]
+    public IActionResult ObtenerPreguntas()
+    {
+        var faciles = _context.preguntas
+            .Where(p => p.dificultad == "Fácil")
+            .OrderBy(x => Guid.NewGuid())
+            .Take(5)
+            .ToList();
+
+        var dificiles = _context.preguntas
+            .Where(p => p.dificultad == "Dificil" || p.dificultad == "Difícil")
+            .OrderBy(x => Guid.NewGuid())
+            .Take(5)
+            .ToList();
+
+        var seleccionadas = faciles.Concat(dificiles)
+            .OrderBy(x => Guid.NewGuid())
+            .ToList();
+
+        // transformar las columnas A/B/C/D a un array de opciones
+        var resultado = seleccionadas.Select(p => new
+        {
+            id = p.id,
+            pregunta = p.texto,
+            opciones = new string[] { p.opciona, p.opcionb, p.opcionc, p.opciond },
+            correcta = p.correcta,
+            dificultad = p.dificultad
+        });
+          
+        return Ok(resultado);
+    }
+
 }

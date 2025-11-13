@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OdontoWeb.Models;
 using OdontoWebAPI.Models;
 using System.Collections.Generic;
 using System.Reflection.Emit;
@@ -15,7 +16,7 @@ namespace OdontoWebAPI.Data
         public DbSet<Rol> Roles { get; set; }
         public DbSet<Servicio> Servicios { get; set; }
 
-
+        public DbSet<Pregunta> preguntas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
