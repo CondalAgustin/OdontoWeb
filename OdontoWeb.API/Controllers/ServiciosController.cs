@@ -149,6 +149,7 @@ public class ServiciosController : ControllerBase
     public async Task<IActionResult> ObtenerTopJugadores()
     {
         var topJugadores = await _context.puntajestrivia
+            .AsNoTracking()
             .Include(p => p.Usuario)
             .OrderByDescending(p => p.puntaje)
             .Take(10)
