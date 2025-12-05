@@ -85,13 +85,13 @@ public class ServiciosController : ControllerBase
         var faciles = _context.preguntas
             .Where(p => p.dificultad == "Fácil")
             .OrderBy(x => Guid.NewGuid())
-            .Take(5)
+            .Take(3)
             .ToList();
 
         var dificiles = _context.preguntas
             .Where(p => p.dificultad == "Dificil" || p.dificultad == "Difícil")
             .OrderBy(x => Guid.NewGuid())
-            .Take(5)
+            .Take(7)
             .ToList();
 
         var seleccionadas = faciles.Concat(dificiles)
